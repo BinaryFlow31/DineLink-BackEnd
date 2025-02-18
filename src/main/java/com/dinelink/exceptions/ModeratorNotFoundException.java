@@ -1,6 +1,6 @@
 package com.dinelink.exceptions;
 
-public class ModeratorNotFoundException extends Exception{
+public class ModeratorNotFoundException extends RuntimeException{
     public ModeratorNotFoundException(String message) {
         super(message);
     }

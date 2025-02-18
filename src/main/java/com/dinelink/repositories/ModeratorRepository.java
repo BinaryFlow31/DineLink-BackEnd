@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ModeratorRepository extends JpaRepository<Moderator,Integer> {
+    public Moderator findByEmail(String email);
 }
