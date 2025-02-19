@@ -11,7 +11,6 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 import static org.springframework.security.config.Customizer.withDefaults;
@@ -28,7 +27,7 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public PasswordEncoder encoder() {
+    public BCryptPasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -40,7 +39,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/v1/auth/login", "/register", "/forgotpwd").permitAll()
                         .requestMatchers("profile/**", "profile", "personalDetails", "profilePic", "address", "education", "mediaLinks")
-                        .hasAuthority("ROLE_USER") // Use hasAuthority instead of hasRole
+                        .hasAuthority("ROLE_CHEF") // Use hasAuthority instead of hasRole
                         .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**")
                         .hasAuthority("ROLE_ADMIN")
                         .anyRequest().authenticated() // All other requests require authentication
