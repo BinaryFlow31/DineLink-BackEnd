@@ -25,8 +25,8 @@ public class SubCategory {
     @JoinColumn(name = "category_id", referencedColumnName = "category_id", nullable = false)
     private Category category;
 
-    @OneToMany(mappedBy = "subCategory", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<FoodItem> foodItems = new ArrayList<>();
+//    @OneToMany(mappedBy = "subCategory", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<FoodItem> foodItems = new ArrayList<>();
 
     public Integer getSubCategoryId() {
         return subCategoryId;
@@ -60,16 +60,16 @@ public class SubCategory {
         this.category = category;
     }
 
-    public List<FoodItem> getFoodItems() {
-        return foodItems;
-    }
-
-    public void setFoodItems(List<FoodItem> foodItems) {
-        this.foodItems = foodItems;
-    }
+//    public List<FoodItem> getFoodItems() {
+//        return foodItems;
+//    }
+//
+//    public void setFoodItems(List<FoodItem> foodItems) {
+//        this.foodItems = foodItems;
+//    }
 
     // Derived method to count food items dynamically
-    public int getNoOfItems() {
-        return foodItems != null ? foodItems.size() : 0;
-    }
+//    public int getNoOfItems() {
+//        return foodItems != null ? foodItems.size() : 0;
+//    }
 }

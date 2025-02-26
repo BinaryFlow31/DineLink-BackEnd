@@ -1,6 +1,8 @@
 package com.dinelink.exceptionHandlers;
 
+import com.dinelink.entities.CategoryErrorResponse;
 import com.dinelink.entities.ModeratorErrorResponse;
+import com.dinelink.exceptions.CategoryNotFound;
 import com.dinelink.exceptions.EmailOrPasswordIncorrectException;
 import com.dinelink.exceptions.ModeratorNotFoundException;
 import org.springframework.http.HttpStatus;

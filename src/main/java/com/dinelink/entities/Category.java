@@ -19,8 +19,8 @@ public class Category {
     @Column(name="name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<SubCategory> subCategories = new ArrayList<>();
+//    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+//    private List<SubCategory> subCategories = new ArrayList<>();
 
     @Column(name="photo")
     private Blob photo;
@@ -41,13 +41,13 @@ public class Category {
         this.photo = photo;
     }
 
-    public List<SubCategory> getSubCategories() {
-        return subCategories;
-    }
-
-    public void setSubCategories(List<SubCategory> subCategories) {
-        this.subCategories = subCategories;
-    }
+//    public List<SubCategory> getSubCategories() {
+//        return subCategories;
+//    }
+//
+//    public void setSubCategories(List<SubCategory> subCategories) {
+//        this.subCategories = subCategories;
+//    }
 
     public String getName() {
         return name;
@@ -57,8 +57,8 @@ public class Category {
         this.name = name;
     }
 
-    // Derived field: This method calculates the number of subcategories dynamically
-    public int getNoOfSubCategories() {
-        return subCategories != null ? subCategories.size() : 0;
-    }
+//    // Derived field: This method calculates the number of subcategories dynamically
+//    public int getNoOfSubCategories() {
+//        return subCategories != null ? subCategories.size() : 0;
+//    }
 }
