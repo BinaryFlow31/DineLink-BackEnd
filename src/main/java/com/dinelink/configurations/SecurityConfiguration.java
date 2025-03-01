@@ -13,6 +13,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+
+import org.springframework.web.cors.CorsConfigurationSource;
+
+
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
@@ -21,9 +25,12 @@ public class SecurityConfiguration {
 
     private ModeratorDetailsService moderatorDetailsService;
 
+    private CorsConfigurationSource corsConfigurationSource;
+
     @Autowired
-    public SecurityConfiguration(ModeratorDetailsService moderatorDetailsService) {
+    public SecurityConfiguration(ModeratorDetailsService moderatorDetailsService, CorsConfigurationSource corsConfigurationSource) {
         this.moderatorDetailsService = moderatorDetailsService;
+        this.corsConfigurationSource = corsConfigurationSource;
     }
 
     @Bean
@@ -34,13 +41,13 @@ public class SecurityConfiguration {
     @Bean
     SecurityFilterChain securityFilter(HttpSecurity http) throws Exception {
         http
-                .cors(cors -> cors.disable())  // Configure CORS if needed
+                .cors(cors -> cors.configurationSource(corsConfigurationSource))  // Configure CORS if needed
                 .csrf(csrf -> csrf.disable())  // Disable CSRF for APIs
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/v1/auth/login", "/register", "/forgotpwd").permitAll()
                         .requestMatchers("profile/**", "profile", "personalDetails", "profilePic", "address", "education", "mediaLinks")
                         .hasAuthority("ROLE_CHEF") // Use hasAuthority instead of hasRole
-                        .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**")
+                        .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**", "/api/v1/moderator")
                         .hasAuthority("ROLE_ADMIN")
                         .anyRequest().authenticated() // All other requests require authentication
                 )
