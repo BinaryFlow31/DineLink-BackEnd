@@ -21,19 +21,21 @@ select * from customers;
 select * from categories;
 select * from sub_categories;
 
+delete from sub_categories;
+
 insert into moderators (email, name, password, role, created_at) values ('admin1234@dinelink.com', 'Admin', '$2a$10$X8Vt7HuReHtOEo82lmOh4uy7913bApfeazyUhI5baabLv2hPM9Rde', 'ADMIN', '2024-02-21 12:34:56.123456');
 -- password is : admin1234
 -- for swagger ui :
 
-INSERT INTO categories (name) VALUES ('Dessert'), ('Steak'), ('Coffee'), ('Burger');
+INSERT INTO categories (name) VALUES ('BreakFast'), ('Lunch'), ('Dinner'), ('Starters'), ('Desserts');
 
 -- Dessert Sub-Categories
 INSERT INTO sub_categories (name, category_id) VALUES 
-('Cakes', 1),
-('Ice Cream', 1),
-('Pastries', 1),
-('Pudding', 1),
-('Chocolate', 1);
+('Cakes', 5),
+('Ice Cream', 5),
+('Pastries', 5),
+('Pudding', 5),
+('Chocolate', 5);
 
 -- Steak Sub-Categories
 INSERT INTO sub_categories (name, category_id) VALUES 

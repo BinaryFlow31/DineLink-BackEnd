@@ -19,14 +19,46 @@ public class Category {
     @Column(name="name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<SubCategory> subCategories = new ArrayList<>();
+//    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+//    private List<SubCategory> subCategories = new ArrayList<>();
 
     @Column(name="photo")
     private Blob photo;
 
-    // Derived field: This method calculates the number of subcategories dynamically
-    public int getNoOfSubCategories() {
-        return subCategories != null ? subCategories.size() : 0;
+    public Integer getCategoryId() {
+        return categoryId;
     }
+
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public Blob getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(Blob photo) {
+        this.photo = photo;
+    }
+
+//    public List<SubCategory> getSubCategories() {
+//        return subCategories;
+//    }
+//
+//    public void setSubCategories(List<SubCategory> subCategories) {
+//        this.subCategories = subCategories;
+//    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+//    // Derived field: This method calculates the number of subcategories dynamically
+//    public int getNoOfSubCategories() {
+//        return subCategories != null ? subCategories.size() : 0;
+//    }
 }
