@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ModeratorService {
 
@@ -60,5 +62,10 @@ public class ModeratorService {
         }
         throw new ModeratorNotFoundException("Moderator does not exist");
 
+    }
+
+    public List<Moderator> fetchAllModerator(String role){
+        List<Moderator> moderator = moderatorRepository.findAllByRole(role);
+        return moderator;
     }
 }
