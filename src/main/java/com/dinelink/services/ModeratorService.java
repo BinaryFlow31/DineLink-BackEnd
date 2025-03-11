@@ -30,7 +30,7 @@ public class ModeratorService {
         }
         String name = moderatorRequest.getName();
         String email = moderatorRequest.getEmail();
-        String password = moderatorRequest.getPassword();
+        String password = passwordEncoder.encode(moderatorRequest.getPassword());
         String roleReq = moderatorRequest.getRole();
         Role role;
         if (roleReq.equalsIgnoreCase("chef")) {
