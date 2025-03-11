@@ -28,9 +28,10 @@ public class MenuController {
         this.foodItemService = foodItemService;
     }
 
+
     @GetMapping("/categories")
-    public ResponseEntity<List<AllCategoryResponse>> getAllCategories() {
-        List<AllCategoryResponse> responses =  categoryService.fetchAllCategories();
+    public ResponseEntity<List<Category>> getAllCategories() {
+         List<Category> responses =  categoryService.fetchAllCategories();
 
         return ResponseEntity.status(HttpStatus.OK).body(responses);
     }
@@ -39,10 +40,10 @@ public class MenuController {
     public ResponseEntity<MenuCreationResponse> createMenu(@PathVariable("newSub") Boolean newSub, @RequestBody MenuCreationRequest menuCreationRequest) {
         MenuCreationResponse response = new MenuCreationResponse();
 
-        if(newSub) {
+        if (newSub) {
             Category newCategory = categoryService.findById(menuCreationRequest.getCategoryId());
 
-            if(newCategory != null) {
+            if (newCategory != null) {
                 SubCategory subCategory = new SubCategory();
                 subCategory.setName(menuCreationRequest.getSubCategoryName());
                 subCategory.setCategory(newCategory);
@@ -66,10 +67,10 @@ public class MenuController {
         } else {
             Category newCategory = categoryService.findById(menuCreationRequest.getCategoryId());
 
-            if(newCategory != null) {
+            if (newCategory != null) {
                 SubCategory newSubCategory = subCategoryService.findById(menuCreationRequest.getSubCategoryId());
 
-                if(newSubCategory != null) {
+                if (newSubCategory != null) {
                     FoodItem foodItem = new FoodItem();
                     foodItem.setSubCategory(newSubCategory);
                     foodItem.setName(menuCreationRequest.getItemName());

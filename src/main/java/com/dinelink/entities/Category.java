@@ -19,11 +19,11 @@ public class Category {
     @Column(name="name", nullable = false)
     private String name;
 
-//    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
-//    private List<SubCategory> subCategories = new ArrayList<>();
-
     @Column(name="photo")
     private Blob photo;
+
+//    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+//    private List<SubCategory> subCategories = new ArrayList<>();
 
     public Integer getCategoryId() {
         return categoryId;

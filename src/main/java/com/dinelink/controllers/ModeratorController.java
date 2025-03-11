@@ -30,7 +30,7 @@ public class ModeratorController {
     }
 
     @PostMapping("/moderator")
-    public ResponseEntity<?> saveChef(@RequestBody ModeratorRequest moderatorRequest) {
+    public ResponseEntity<?> saveModerator(@RequestBody ModeratorRequest moderatorRequest) {
         try {
             ModeratorResponse moderatorResponse = moderatorService.saveModerator(moderatorRequest);
             return ResponseEntity.status(HttpStatus.CREATED).body(moderatorResponse);
